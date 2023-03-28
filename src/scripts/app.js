@@ -1,6 +1,6 @@
 'use strict';
 
-// import '../styles/app.scss';
+import '../styles/app.scss';
 
 const API_KEY = import.meta.env.TMDB_API_KEY;
 

@@ -1,0 +1,25 @@
+// list
+
+
+
+.menu{
+  background: $c-bg;
+
+  &__liste{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+  }
+  &__el{
+    margin-left: 20px;
+
+    a{
+      color: $c-alt;
+      text-decoration: none;
+      &:hover, &:focus{
+        color: darken($c-alt, 20%);
+      }
+    }
+  }
+}
