@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>CineWish - Presentation</title>
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" href="https://use.typekit.net/jcp4nie.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/images/favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/images/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/images/favicon/site.webmanifest" />
+        <link
+            rel="mask-icon"
+            href="./assets/images/favicon/safari-pinned-tab.svg"
+            color="#5bbad5"
+        />
+        <meta name="msapplication-TileColor" content="#2b5797" />
+        <meta name="theme-color" content="#ffffff" />
+    </head>
+
+    <body>
+        <header class="presentation-header">
+            <div class="presentation-header__content">
+                <div class="presentation-header__el">
+                    <h1 class="title presentation-header__title">CineWish</h1>
+                    <p class="presentation-header__text">
+                        Application permettant de découvrir les derniers films à
+                        l'affiche et d'ajouter des films que l'on a envie de
+                        voir dans notre wishlist
+                    </p>
+                    <a class="button" href="wishapp/index.html"
+                        >Découvrir l'app</a
+                    >
+                </div>
+                <div class="presentation-header__el">
+                    <img
+                        class="presentation-header__img"
+                        src="./assets/images/iphone@1x.png"
+                        srcset="./assets/images/iphone@2x.png"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <div class="presentation-header__bg"></div>
+        </header>
+        <main>
+            <section class="container">
+                <div class="section intro">
+                    <h2 class="title intro__title">
+                        À propos de <span>CineWish</span>
+                    </h2>
+                    <p class="intro__text">
+                        <span>CineWish</span> est une application qui montre à
+                        l'utilisateur les derniers films parus ainsi que les
+                        films qui sont sur le point de sortir, tout cela
+                        accompagné d'un résumé et de quelques informations
+                        concernant le film sélectionné. L'utilisateur a
+                        également la possibilité d'ajouter des films qui
+                        l'intéressent dans une liste de "souhaits".
+                    </p>
+                </div>
+            </section>
+
+            <section class="container">
+                <div class="fonctions">
+                    <div class="section list">
+                        <h2 class="title">Les fonctionnalités</h2>
+                        <ul class="fonctions__block">
+                            <li class="fonctions__list">
+                                <div class="fonctions__el">
+                                    <img
+                                        src="./assets/images/plus_blue.svg"
+                                        height="40"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="fonctions__el">
+                                    <h3 class="fonctions__title">
+                                        Ajouter des films à notre liste
+                                    </h3>
+                                    <p>
+                                        Fonction principale qui permet d'ajouter
+                                        les films qui nous intéressent à notre
+                                        wishlist.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="fonctions__list">
+                                <div class="fonctions__el">
+                                    <img
+                                        src="./assets/images/movie.svg"
+                                        height="40"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="fonctions__el">
+                                    <h3 class="fonctions__title">
+                                        Nouveaux films
+                                    </h3>
+                                    <p>
+                                        Mise en évidence de nouveaux films ou de
+                                        ceux arrivant prochainement au cinéma.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="fonctions__list">
+                                <div class="fonctions__el">
+                                    <img
+                                        src="./assets/images/view.svg"
+                                        height="40"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="fonctions__el">
+                                    <h3 class="fonctions__title">
+                                        Films populaires
+                                    </h3>
+                                    <p>
+                                        Sélection de films étant actuellement
+                                        les plus populaires auprès de la
+                                        communauté.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <div class="link">
+                <a class="link__el button" href="wishapp/index.html"
+                    >Tester l'application</a
+                >
+            </div>
+            <div class="bg-transition"></div>
+        </main>
+
+        <script type="module" src="./scripts/app.js"></script>
+    </body>
+</html>
