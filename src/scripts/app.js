@@ -2,9 +2,23 @@
 
 import '../styles/app.scss';
 
-const API_KEY = import.meta.env.TMDB_API_KEY;
+const MOVIE_URL = `/.netlify/functions/fetch-movies?id=`;
+const FEATURED_URL = `/.netlify/functions/fetch-featured-movies`;
+const UPCOMING_URL = `/.netlify/functions/fetch-featured-movies`;
+const SEARCH_URL = `/.netlify/functions/fetch-searched-movies?query=`;
 
-console.log(API_KEY);
+fetch(`/.netlify/functions/fetch-upcoming-movies`).then((res) =>
+    console.log(res.json())
+);
+// fetch(`/.netlify/functions/fetch-movies?id=76600`).then((res) =>
+//     console.log(res.json())
+// );
+// fetch(`/.netlify/functions/fetch-featured-movies`).then((res) =>
+//     console.log(res.json())
+// );
+// fetch(
+//     `/.netlify/functions/fetch-searched-movies?query=${encodeURI('avatar 2')}`
+// ).then((res) => console.log(res.json()));
 
 const link = document.querySelector('.link');
 
@@ -83,9 +97,7 @@ if (existMain.length > 0) {
         return wishlist;
     }
 
-    fetch(
-        'https://garith.be/b2/tmdb/api/movie/now_playing&region=FR&language=fr-FR'
-    )
+    fetch(FEATURED_URL)
         .then((response) => response.json())
         .then((json) => {
             // Image + infos film highlighted (N°1 dans "popular")
@@ -116,11 +128,7 @@ if (existMain.length > 0) {
 
             // Genres du film
             let value = movie.id;
-            let url =
-                'https://garith.be/b2/tmdb/api/movie/' +
-                encodeURI(value) +
-                '&language=fr-FR';
-            fetch(url)
+            fetch(MOVIE_URL + encodeURI(value))
                 .then((response) => response.json())
                 .then((json) => {
                     let genreMovie = json.genres;
@@ -205,9 +213,7 @@ if (existMain.length > 0) {
             }
         });
 
-    fetch(
-        'https://garith.be/b2/tmdb/api/movie/upcoming&region=FR&language=fr-FR'
-    )
+    fetch(UPCOMING_URL)
         .then((response) => response.json())
         .then((json) => {
             // Liste des films à bientôt
@@ -270,9 +276,7 @@ if (existMain.length > 0) {
     // Détails film
     function displayMovie(id) {
         setActiveSection('movie');
-        let url =
-            'https://garith.be/b2/tmdb/api/movie/' + id + '&language=fr-FR';
-        fetch(url)
+        fetch(MOVIE_URL + id)
             .then((response) => response.json())
             .then((json) => {
                 let posterUrl = '../assets/images/404.jpg';
@@ -426,11 +430,7 @@ if (existMain.length > 0) {
                 return;
             }
             // encodeURI permet d'encoder la valeur en paramètre GET.
-            let url =
-                'https://garith.be/b2/tmdb/api/search/movie?query=' +
-                encodeURI(value) +
-                '&language=fr-FR';
-            fetch(url)
+            fetch(SEARCH_URL + encodeURI(value))
                 .then((response) => response.json())
                 .then((json) => {
                     moviesSearchList.innerHTML = '';
@@ -535,8 +535,7 @@ if (existMain.length > 0) {
         }
 
         for (let i = 0; i < wishlist.length; i++) {
-            let url = 'https://garith.be/b2/tmdb/api/movie/' + wishlist[i];
-            fetch(url)
+            fetch(MOVIE_URL + wishlist[i])
                 .then((response) => response.json())
                 .then((json) => {
                     let posterUrl = '../assets/images/404.jpg';
