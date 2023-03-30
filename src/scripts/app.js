@@ -3,8 +3,6 @@
 import * as config from './config';
 import { AJAX } from './helpers';
 
-import { loadMovies } from './fetch';
-
 import '../styles/app.scss';
 
 const link = document.querySelector('.link');

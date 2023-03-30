@@ -7,7 +7,7 @@ const handler = async (event) => {
     const API_KEY = process.env.TMDB_API_KEY;
     const API_LANGUAGE = process.env.API_LANGUAGE;
 
-    const url = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}`;
+    const url = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}&${API_LANGUAGE}`;
 
     try {
         const { data } = await axios.get(url);
