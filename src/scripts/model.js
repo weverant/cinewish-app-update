@@ -1,6 +1,8 @@
 import { AJAX } from './helpers';
 import { MOVIE_URL, FEATURED_URL, UPCOMING_URL } from './config';
 
+import { toHoursAndMinutes } from './helpers';
+
 export const state = {
     highlightedMovie: {},
     movie: {},
@@ -20,15 +22,16 @@ const createMovieObject = (data) => {
         title: movie.title,
         poster: movie.poster_path,
         genres: [...movie.genres],
-        note: movie.vote_average,
+        note: movie.vote_average.toFixed(1),
+        release_date: movie.release_date,
+        runtime: toHoursAndMinutes(movie.runtime),
+        overview: movie.overview,
         ...(movie.key && { key: movie.key }),
     };
 };
 
 /*
- *
  *   Loading data
- *
  */
 export const loadMovie = async (id) => {
     try {
@@ -37,7 +40,7 @@ export const loadMovie = async (id) => {
 
         if (state.wishlist.some((movie) => movie.id === id))
             state.movie.isInWishlist = true;
-        else state.recipe.isInWishlist = false;
+        else state.movie.isInWishlist = false;
     } catch (err) {
         console.error(`${err} 💥💥💥💥`);
         throw err;
@@ -74,9 +77,7 @@ export const loadHighlightedMovie = async (object) => {
 };
 
 /*
- *
  *   Get data
- *
  */
 export const getMovies = (source) => {
     return state[source].slice(1, 20);

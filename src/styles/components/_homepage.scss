@@ -95,8 +95,7 @@ section:last-child {
   }
 }
 
-.bg--on {
-  display: block;
+.backdrop {
   position: absolute;
   top: -40vh;
   left: -50vw;
@@ -286,7 +285,7 @@ section:last-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
+  z-index: 1;
   position: fixed;
   bottom: 0;
 
@@ -477,6 +476,7 @@ section:last-child {
   svg {
     vertical-align: middle;
     font-size: 200px;
+    pointer-events: none;
   }
 }
 
@@ -517,7 +517,6 @@ section:last-child {
   &__el {
     border-radius: 15px;
     margin: 0 5px;
-    cursor: pointer;
     height: 25rem;
     aspect-ratio: 7/10;
     
@@ -747,34 +746,37 @@ section:last-child {
   }
 }
 
-.background {
-  z-index: -1;
-  position: absolute;
-  top: 0;
+.header-wrapper {
   height: 450px;
-  width: 100%;
   background-color: $c-details;
-  overflow: hidden;
 }
 
 .header {
-  @include lg {
-    justify-content: center;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    background-image: url("../assets/images/scene_1.jpg");
-    background-position: center;
-    background-size: cover;
+  &__wrapper {
+    height: 450px;
+    background-color: $c-details;
   }
-  transform: translateY(-100%);
-  animation: slideIn 0.55s forwards 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  height: 450px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
+
+  &__inner {
+    transform: translateY(-100%);
+    animation: slideIn 0.55s forwards 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @include lg {
+      justify-content: center;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      background-image: url("../assets/images/scene_1.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+  }
+  
 
   &__content {
     @include lg {
@@ -943,6 +945,12 @@ section:last-child {
     font-size: 26px;
   }
 }
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 ::selection{
   background-color: $c-details;
   color: $c-white;
