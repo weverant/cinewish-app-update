@@ -1,3 +1,7 @@
+html {
+  font-size: 10px;
+}
+
 body {
   color: $c-black;
   margin: 0;
@@ -6,6 +10,8 @@ body {
   font-weight: 400;
   font-style: normal;
   line-height: 1.6;
+
+  font-size: 1.6rem;
 }
 
 
@@ -476,6 +482,7 @@ section:last-child {
 
 .movies {
   margin: 0 20px;
+  min-height: 280px;
 
   strong {}
 
@@ -487,16 +494,17 @@ section:last-child {
   }
 
   &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fadeIn 1s forwards 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    display: block;
+    border-radius: 15px;
+    
     @include lg {
-      height: 280px;
       transform: translateY(100%);
       animation: slideIn 0.55s forwards 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
     }
-    
-    animation: fadeIn 1s forwards 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
-    display: block;
-    height: 250px;
-    border-radius: 15px;
   }
 
   &__text {
@@ -510,6 +518,12 @@ section:last-child {
     border-radius: 15px;
     margin: 0 5px;
     cursor: pointer;
+    height: 25rem;
+    aspect-ratio: 7/10;
+    
+    @include lg {
+      height: 28rem;
+    }
   }
 }
 

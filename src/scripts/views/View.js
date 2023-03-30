@@ -1,3 +1,5 @@
+import { POSTER_URL, POSTER_404 } from '../config';
+
 export default class View {
     _data;
 
@@ -11,6 +13,12 @@ export default class View {
 
         this._clear();
         this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+
+    _getPoster() {
+        return this._data.poster
+            ? POSTER_URL('400') + this._data.poster
+            : POSTER_404;
     }
 
     _clear() {
