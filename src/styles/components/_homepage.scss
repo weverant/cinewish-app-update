@@ -185,6 +185,11 @@ section:last-child {
   }
 
   &__content {
+    animation: scaleIn 0.35s forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: scale(0.8);
+    opacity: 0;
+    margin: 0 0 70px;
+
     @include lg {
       background-color: $c-white;
       z-index: 1;
@@ -193,10 +198,6 @@ section:last-child {
       max-height: 80vh;
       overflow: scroll;
     }
-    animation: scaleIn 0.35s forwards cubic-bezier(0.215, 0.61, 0.355, 1);
-    transform: scale(0);
-    opacity: 0;
-    margin: 0 0 70px;
   }
 
   &__poster {
@@ -217,8 +218,6 @@ section:last-child {
     &--deco {
       @include lg {
         max-width: 500px;
-        left: 50%;
-        transform: translateX(-50%);
       }
       z-index: 1;
       position: absolute;
@@ -233,7 +232,9 @@ section:last-child {
           top: -25%;
           left: 50%;
           transform: translateX(-50%);
+          width: 110%;
         }
+
         max-width: 110%;
         position: absolute;
         bottom: 50%;
@@ -518,7 +519,7 @@ section:last-child {
     border-radius: 15px;
     margin: 0 5px;
     height: 25rem;
-    aspect-ratio: 7/10;
+    aspect-ratio: 7/11;
     
     @include lg {
       height: 28rem;
@@ -946,9 +947,8 @@ section:last-child {
   }
 }
 
-.hidden {
-  opacity: 0;
-  visibility: hidden;
+.loading-cursor {
+  cursor: progress;
 }
 
 ::selection{

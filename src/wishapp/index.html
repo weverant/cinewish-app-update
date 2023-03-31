@@ -34,11 +34,11 @@
         <meta name="theme-color" content="#ffffff" />
     </head>
 
-    <body class="mainHide">
+    <body>
         <nav class="">
             <ul class="nav">
                 <li class="nav__el">
-                    <a href="#" class="home__btn mode-trigger" data-mode="home">
+                    <a href="#" class="home__btn tab-link" data-tab="home">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -54,8 +54,8 @@
                 <li class="nav__el">
                     <a
                         href="#"
-                        class="wishlist__btn mode-trigger"
-                        data-mode="wish"
+                        class="wishlist__btn tab-link"
+                        data-tab="wishlist"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -70,11 +70,7 @@
                     </a>
                 </li>
                 <li class="nav__el">
-                    <a
-                        href="#"
-                        class="search__btn mode-trigger"
-                        data-mode="search"
-                    >
+                    <a href="#" class="search__btn tab-link" data-tab="search">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -89,14 +85,14 @@
                 </li>
             </ul>
         </nav>
-        <main class="page page--open page--index">
+        <main class="page page--open page--home">
             <header class="header">
                 <div class="header__wrapper"></div>
             </header>
 
             <section class="container">
                 <div class="pop-movie">
-                    <h2 class="title pop-movie__title">Films récents</h2>
+                    <h2 class="title pop-movie__title">Films populaires</h2>
                     <div class="movies">
                         <ul
                             class="popular-movies__el movies__scroll-wrapper"

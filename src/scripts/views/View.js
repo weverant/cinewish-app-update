@@ -15,6 +15,11 @@ export default class View {
         this._parentElement.insertAdjacentHTML('afterbegin', markup);
     }
 
+    update(data) {
+        this._data = data;
+        const newMarkup = this._generateMarkup();
+    }
+
     _getPoster() {
         return this._data.poster
             ? POSTER_URL('400') + this._data.poster

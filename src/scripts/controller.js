@@ -9,6 +9,9 @@ import {
 } from './views/displayMoviesView';
 import highlightedMovieView from './views/highlightedMovieView';
 import detailsView from './views/detailsView';
+import wishlistView from './views/wishlistView';
+
+import tab from './tabs/Tab';
 
 import { FEATURED_URL, UPCOMING_URL } from './config';
 
@@ -35,6 +38,8 @@ const controlMovieDetails = async () => {
         const id = window.location.hash.slice(1);
         if (!id) return;
 
+        detailsView.setPointer(id);
+
         await model.loadMovie(id);
 
         detailsView.render(model.state.movie);
@@ -44,9 +49,24 @@ const controlMovieDetails = async () => {
     }
 };
 
+const controlWishlist = async () => {
+    wishlistView.render(model.state.wishlist);
+};
+
+const controlAddToWishlist = async () => {
+    if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
+    else model.deleteBookmark(model.state.recipe.id);
+
+    recipeView.update(model.state.recipe);
+
+    bookmarksView.render(model.state.bookmarks);
+};
+
 const init = () => {
     displayMoviesViewInstance.addHandlerRender(controlMovieList);
     detailsView.addHandlerRender(controlMovieDetails);
+    wishlistView.addHandlerRender(controlWishlist);
 };
 
 init();
+const test = new tab();

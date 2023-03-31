@@ -28,8 +28,30 @@ class DetailsView extends View {
         this._parentElement.classList.toggle('page--open');
     }
 
+    setPointer(id) {
+        const targetElement = document.querySelector(
+            `.movie-link[href="#${id}"]`
+        );
+
+        if (!targetElement) return;
+
+        targetElement.classList.add('loading-cursor');
+    }
+
+    _disablePointer() {
+        document
+            .querySelector('.loading-cursor')
+            .classList.remove('loading-cursor');
+    }
+
+    render(data, render = true) {
+        this._disablePointer();
+
+        super.render(data, (render = true));
+    }
+
     _addHandlerHideWindow() {
-        window.addEventListener('click', (e) => {
+        document.addEventListener('click', (e) => {
             if (
                 ['backdrop', 'btn'].some((className) =>
                     e.target.classList.contains(className)

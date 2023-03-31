@@ -12,7 +12,7 @@ export const state = {
     },
     featured: [],
     upcoming: [],
-    wishlist: [],
+    wishlist: ['76600'],
 };
 
 const createMovieObject = (data) => {
@@ -85,6 +85,30 @@ export const getMovies = (source) => {
 
 export const getHighlightedMovie = () => {
     return state.highlightedMovie;
+};
+
+/*
+ *   Wishlist management
+ */
+const persistWishlist = () => {
+    localStorage.setItem('wishlist', JSON.stringify(state.bookmarks));
+};
+
+export const addToWishlist = (movie) => {
+    state.wishlist.push(movie);
+
+    if (movie.id === state.movie.id) state.movie.isInWishlist = true;
+
+    persistWishlist();
+};
+
+export const deleteFromWishlist = (id) => {
+    const index = state.wishlist.findIndex((el) => el.id === id);
+    state.wishlist.splice(index, 1);
+
+    if (id === state.movie.id) state.movie.isInWishlist = false;
+
+    persistWishlist();
 };
 
 const init = () => {
