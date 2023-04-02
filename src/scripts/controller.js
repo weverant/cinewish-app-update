@@ -24,6 +24,12 @@ const controlMovieList = async () => {
         await model.loadHighlightedMovie(model.state.featured[0]);
 
         document.body.style.cursor = '';
+        setTimeout(
+            () =>
+                (document.body.style =
+                    '--move-from: 0; --scale-from: 1; --fade-from: 1;'),
+            1000
+        );
 
         featuredMoviesViewInstance.render(model.getMovies('featured'));
         upcomingMoviesViewInstance.render(model.getMovies('upcoming'));
@@ -35,10 +41,12 @@ const controlMovieList = async () => {
 
 const controlMovieDetails = async () => {
     try {
-        const id = window.location.hash.slice(1);
+        const id = Number(window.location.hash.slice(1));
         if (!id) return;
 
         detailsView.setPointer(id);
+
+        wishlistView.update(model.state.wishlist);
 
         await model.loadMovie(id);
 
@@ -49,23 +57,24 @@ const controlMovieDetails = async () => {
     }
 };
 
+const controlAddToWishlist = async () => {
+    if (!model.state.movie.isInWishlist) model.addToWishlist(model.state.movie);
+    else model.deleteFromWishlist(model.state.movie.id);
+
+    detailsView.update(model.state.movie);
+
+    wishlistView.render(model.state.wishlist);
+};
+
 const controlWishlist = async () => {
     wishlistView.render(model.state.wishlist);
 };
 
-const controlAddToWishlist = async () => {
-    if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
-    else model.deleteBookmark(model.state.recipe.id);
-
-    recipeView.update(model.state.recipe);
-
-    bookmarksView.render(model.state.bookmarks);
-};
-
 const init = () => {
+    wishlistView.addHandlerRender(controlWishlist);
     displayMoviesViewInstance.addHandlerRender(controlMovieList);
     detailsView.addHandlerRender(controlMovieDetails);
-    wishlistView.addHandlerRender(controlWishlist);
+    detailsView.addHandlerAddToWishlist(controlAddToWishlist);
 };
 
 init();

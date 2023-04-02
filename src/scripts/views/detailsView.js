@@ -39,9 +39,11 @@ class DetailsView extends View {
     }
 
     _disablePointer() {
-        document
-            .querySelector('.loading-cursor')
-            .classList.remove('loading-cursor');
+        const pointer = document.querySelector('.loading-cursor');
+
+        if (!pointer) return;
+
+        pointer.classList.remove('loading-cursor');
     }
 
     render(data, render = true) {

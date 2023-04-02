@@ -30,6 +30,7 @@ class HighlightedMovieView extends View {
                 </ul>
             </div>
             <div class="movie-hl">
+                <div class="movie-hl__gradient"></div>
                 <div class="movie-hl__el">
                     <img src="${this._getPoster()}" alt="${this._data.title}">
                 </div>

@@ -12,7 +12,7 @@ export const state = {
     },
     featured: [],
     upcoming: [],
-    wishlist: ['76600'],
+    wishlist: [],
 };
 
 const createMovieObject = (data) => {
@@ -91,7 +91,7 @@ export const getHighlightedMovie = () => {
  *   Wishlist management
  */
 const persistWishlist = () => {
-    localStorage.setItem('wishlist', JSON.stringify(state.bookmarks));
+    localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
 };
 
 export const addToWishlist = (movie) => {
