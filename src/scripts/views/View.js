@@ -52,7 +52,28 @@ export default class View {
             : POSTER_404;
     }
 
+    _getReleaseDate() {
+        return this._data.release_date
+            ? `(${this._data.release_date.substr(0, 4)})`
+            : '';
+    }
+
     _clear() {
         this._parentElement.innerHTML = '';
+    }
+
+    renderError(message = this._errorMessage) {
+        const markup = `
+          <div class="error">
+            <div>
+              <svg>
+                <use href="${icons}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+        `;
+        this._clear();
+        this._parentElement.insertAdjacentHTML('afterbegin', markup);
     }
 }

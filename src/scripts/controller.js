@@ -9,6 +9,8 @@ import {
 } from './views/displayMoviesView';
 import highlightedMovieView from './views/highlightedMovieView';
 import detailsView from './views/detailsView';
+import searchView from './views/searchView';
+import resultsView from './views/resultsView';
 import wishlistView from './views/wishlistView';
 
 import tab from './tabs/Tab';
@@ -57,6 +59,18 @@ const controlMovieDetails = async () => {
     }
 };
 
+const controlSearchResults = async function () {
+    try {
+        const query = searchView.getQuery();
+        if (!query) return;
+
+        await model.loadSearchResults(query);
+        resultsView.render(model.getSearchResults());
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 const controlAddToWishlist = async () => {
     if (!model.state.movie.isInWishlist) model.addToWishlist(model.state.movie);
     else model.deleteFromWishlist(model.state.movie.id);
@@ -75,6 +89,7 @@ const init = () => {
     displayMoviesViewInstance.addHandlerRender(controlMovieList);
     detailsView.addHandlerRender(controlMovieDetails);
     detailsView.addHandlerAddToWishlist(controlAddToWishlist);
+    searchView.addHandlerSearch(controlSearchResults);
 };
 
 init();

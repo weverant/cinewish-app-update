@@ -1,5 +1,5 @@
 import { AJAX } from './helpers';
-import { MOVIE_URL, FEATURED_URL, UPCOMING_URL } from './config';
+import { MOVIE_URL, FEATURED_URL, UPCOMING_URL, SEARCH_URL } from './config';
 
 import { toHoursAndMinutes } from './helpers';
 
@@ -76,6 +76,28 @@ export const loadHighlightedMovie = async (object) => {
     }
 };
 
+export const loadSearchResults = async (query) => {
+    try {
+        state.search.query = query;
+
+        const data = await AJAX(SEARCH_URL + query);
+
+        state.search.results = data.results.map((movie) => {
+            return {
+                id: movie.id,
+                title: movie.title,
+                poster: movie.poster_path,
+                release_date: movie.release_date,
+                overview: movie.overview,
+                ...(movie.key && { key: movie.key }),
+            };
+        });
+    } catch (err) {
+        console.error(`${err} 💥💥💥💥`);
+        throw err;
+    }
+};
+
 /*
  *   Get data
  */
@@ -85,6 +107,10 @@ export const getMovies = (source) => {
 
 export const getHighlightedMovie = () => {
     return state.highlightedMovie;
+};
+
+export const getSearchResults = () => {
+    return state.search.results.slice(0, 20);
 };
 
 /*

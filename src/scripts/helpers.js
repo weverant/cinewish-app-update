@@ -29,3 +29,14 @@ export const toHoursAndMinutes = (totalMinutes) => {
 
     return `${hours}h${minutes}`;
 };
+
+export const debounce = (callback, delay = 1000) => {
+    let timeOut;
+
+    return (...args) => {
+        clearTimeout(timeOut);
+        timeOut = setTimeout(() => {
+            callback(...args);
+        }, delay);
+    };
+};

@@ -17,7 +17,6 @@ class WishlistView extends View {
 
         this._clear();
         this._parentElement.insertAdjacentHTML('afterbegin', markup);
-        console.log('rendddddddd');
     }
 
     addHandlerRender(handler) {
@@ -25,7 +24,6 @@ class WishlistView extends View {
     }
 
     _generateMarkup() {
-        console.log('generate', this._data);
         return this._data
             .map((result) => posterView.render(result, false))
             .join('');

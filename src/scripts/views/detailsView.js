@@ -47,7 +47,11 @@ class DetailsView extends View {
     }
 
     render(data, render = true) {
+        const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
         this._disablePointer();
+        window.scrollTo(0, scrollTop);
 
         super.render(data, (render = true));
     }
@@ -66,14 +70,15 @@ class DetailsView extends View {
     }
 
     _clearHash() {
+        const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
         window.location.hash = '';
+
+        window.scrollTo(0, scrollTop);
     }
 
     _generateMarkup() {
-        const releaseDate = this._data.release_date
-            ? `(${this._data.release_date.substr(0, 4)})`
-            : '';
-
         return `
         <button class="btn" data-section="index">
             <svg
@@ -101,7 +106,7 @@ class DetailsView extends View {
             <div class="movie__desc">
                 <h2 class="movie__title title">${
                     this._data.title
-                }<span>${releaseDate}</span></h2>
+                }<span>${this._getReleaseDate()}</span></h2>
                 <p class="movie__overview">${this._data.overview}</p>
             </div>
         </div>
