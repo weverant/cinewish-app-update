@@ -31,6 +31,10 @@ class DetailsView extends View {
 
     hideWindow() {
         this._parentElement.classList.remove('page--open');
+
+        if (document.body.classList.contains('no-scroll')) {
+            document.body.classList.remove('no-scroll');
+        }
     }
 
     setPointer(id) {
