@@ -11,9 +11,9 @@ class DetailsView extends View {
     }
 
     addHandlerRender(handler) {
-        ['hashchange', 'load'].forEach((ev) =>
-            window.addEventListener(ev, handler)
-        );
+        ['hashchange', 'load'].forEach((ev) => {
+            window.addEventListener(ev, handler);
+        });
     }
 
     addHandlerAddToWishlist(handler) {
@@ -26,6 +26,11 @@ class DetailsView extends View {
 
     toggleWindow() {
         this._parentElement.classList.toggle('page--open');
+        document.body.classList.toggle('no-scroll');
+    }
+
+    hideWindow() {
+        this._parentElement.classList.remove('page--open');
     }
 
     setPointer(id) {
@@ -47,11 +52,7 @@ class DetailsView extends View {
     }
 
     render(data, render = true) {
-        const scrollTop =
-            window.pageYOffset || document.documentElement.scrollTop;
-
         this._disablePointer();
-        window.scrollTo(0, scrollTop);
 
         super.render(data, (render = true));
     }
@@ -104,15 +105,17 @@ class DetailsView extends View {
                 <img src="${this._getPoster()}" alt="${this._data.title}">
             </div>
             <div class="movie__desc">
-                <h2 class="movie__title title">${
-                    this._data.title
-                }<span>${this._getReleaseDate()}</span></h2>
+                <div class="movie__headline">
+                    <h2 class="movie__title title">${
+                        this._data.title
+                    }<span>${this._getReleaseDate()}</span></h2>
+                    <button class="trigger btn-wishlist ${
+                        this._data.isInWishlist ? 'trigger--added' : ''
+                    }"></button>
+                </div>
                 <p class="movie__overview">${this._data.overview}</p>
             </div>
         </div>
-        <button class="trigger btn-wishlist ${
-            this._data.isInWishlist ? 'trigger--added' : ''
-        }"></button>
         <div class="backdrop"></div>
     `;
     }

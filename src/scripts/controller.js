@@ -44,7 +44,10 @@ const controlMovieList = async () => {
 const controlMovieDetails = async () => {
     try {
         const id = Number(window.location.hash.slice(1));
-        if (!id) return;
+        if (!id) {
+            detailsView.hideWindow();
+            return;
+        }
 
         detailsView.setPointer(id);
 
@@ -65,6 +68,7 @@ const controlSearchResults = async function () {
         if (!query) return;
 
         await model.loadSearchResults(query);
+
         resultsView.render(model.getSearchResults());
     } catch (err) {
         console.log(err);
@@ -85,6 +89,7 @@ const controlWishlist = async () => {
 };
 
 const init = () => {
+    tab.addHandlerClick();
     wishlistView.addHandlerRender(controlWishlist);
     displayMoviesViewInstance.addHandlerRender(controlMovieList);
     detailsView.addHandlerRender(controlMovieDetails);
@@ -93,4 +98,3 @@ const init = () => {
 };
 
 init();
-const test = new tab();

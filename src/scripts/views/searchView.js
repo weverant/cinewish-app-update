@@ -13,7 +13,7 @@ class SearchView {
             'input',
             debounce(() => {
                 handler();
-            }, 250)
+            }, 400)
         );
     }
 }
