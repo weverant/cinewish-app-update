@@ -1,0 +1,22 @@
+.wishlist {
+    --poster-height: 22rem;
+  
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 1rem;
+    margin-bottom: 70px;
+  
+    &__title {
+      font-size: 38px;
+      margin-left: 20px;
+      margin-bottom: 20px;
+      margin-top: 0.5em;
+  
+      @include lg {
+        --poster-height: 28rem;
+        margin-top: 2em;
+      }
+    }
+  }

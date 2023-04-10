@@ -1,6 +1,14 @@
-@import 'utils/variables';
-@import 'utils/mixin';
-@import 'components/homepage';
+// @import 'base/reset';
+@import 'base/typo';
+@import 'base/variables';
+@import 'base/mixin';
+
+@import 'layout/body';
+
+
 @import 'components/list';
-@import 'components/typo';
 @import 'components/animations';
+
+
+@import 'pages/homepage';
+@import 'pages/wishlist';   

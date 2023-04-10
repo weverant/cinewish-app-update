@@ -1,0 +1,23 @@
+.trigger {
+    box-sizing: initial;
+    background-image: url("../assets/images/plus.svg");
+    height: 24px;
+    width: 24px;
+    padding: 0.25rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+    cursor: pointer;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    z-index: 1;
+  
+    @media (pointer: coarse) {
+      padding: 1em;
+    }
+  
+    &--added {
+      background-image: url("../assets/images/check.svg");
+    }
+  }
