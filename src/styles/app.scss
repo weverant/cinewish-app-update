@@ -4,11 +4,14 @@
 @import 'base/mixin';
 
 @import 'layout/body';
+@import 'layout/nav';
 
-
+@import 'components/buttons';
 @import 'components/list';
+@import 'components/movie-details';
+@import 'components/movies';
 @import 'components/animations';
 
-
 @import 'pages/homepage';
-@import 'pages/wishlist';   
+@import 'pages/wishlist';
+@import 'pages/search';

@@ -1,3 +1,24 @@
+.btn {
+    animation: var(--animation, scaleIn) var(--animation-duration, 0.35s) forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: scale(var(--scale-from, 0));
+    opacity: 0;
+    z-index: 100;
+    margin: 20px;
+    position: absolute;
+    right: 0;
+    background-color: rgba(255, 255, 255, .2);
+    padding: 5px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  
+    svg {
+        vertical-align: middle;
+        font-size: 200px;
+        pointer-events: none;
+    }
+}
+
 .trigger {
     box-sizing: initial;
     background-image: url("../assets/images/plus.svg");
@@ -14,10 +35,10 @@
     z-index: 1;
   
     @media (pointer: coarse) {
-      padding: 1em;
+        padding: 1em;
     }
   
     &--added {
-      background-image: url("../assets/images/check.svg");
+        background-image: url("../assets/images/check.svg");
     }
   }
